@@ -42,8 +42,8 @@
 
 
 <script>
-	$.getJSON('google-books-book.json', function(data){
-		console.log(data)
+	$.getJSON('google-books-book.json', function(json){
+		$('#title').append(json.volumeInfo.title);
 		});
  
 </script>
