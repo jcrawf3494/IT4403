@@ -32,6 +32,7 @@
   
 
 <div id="title"></div>
+<div id="pic"></div>
 
 
 
@@ -47,6 +48,7 @@
             $.getJSON("google-books-book.json", function(json){
 
                 $('#title').append(json.volumeInfo.title);
+		    $('#pic').append(json.volumeInfo.imageLinks.thumbnail)
 
             });
 
