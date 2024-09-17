@@ -51,7 +51,7 @@
 		$.getJSON("google-books-book.json", function(jc){
 			$('#title').append(jc.volumeInfo.title);
 			$('#Author').append(jc.volumeInfo.authors);
-			$('#ISBN').append(jc.volumeInfo.industryIdentifiers.[0].identifier);
+			$('#ISBN').append(jc.volumeInfo.industryIdentifiers[0].identifier);
 			$('#publishedDate').append(jc.volumeInfo.publishedDate);
 			$('#description').append(jc.volumeInfo.description);
 	
