@@ -41,12 +41,17 @@
 
 
 
+
 <script>
-	$.getJSON('google-books-book.json', function(json){
-		$('#title').append(json.volumeInfo.title);
-		});
- 
-</script>
+        $(document).ready(function(){
+            $.getJSON("google-books-book.json", function(json){
+
+                $('#title').append(json.volumeInfo.title);
+
+            });
+
+        });
+    </script>
 
 <footer>
   <a>Fall Semester 2024</a>
