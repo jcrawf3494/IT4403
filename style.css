@@ -1,0 +1,144 @@
+ul {
+  font-family: 'Montserrat', sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+  justify-content: center;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #FFC629;
+  text-emphasis: #B2B4B2;
+  text-align: center;
+  padding: 14px 25px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color:#B2B4B2;
+}
+
+.active {
+  background-color: #FFC629;
+  color:  #2D2926;
+}
+
+
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 45px;
+  letter-spacing: 0.2em;
+  line-height: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  color: #2D2926;
+  padding: 14px 16px;
+  margin: NONE;
+  background:  #FFC629;;
+}
+
+footer {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: .75em;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  line-height: 1.3em;
+  margin: 20px;
+  height: 50px;
+  color: #FFC629;
+
+  background-image:url("https://webstatic.kennesaw.edu/_resources/images/template/footer_bg.jpg");
+}
+footer a{
+  color: #FFC629;
+}
+
+body{
+  justify-content: center;
+
+}
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.banner_box {
+  width: 100%;
+  height: 250px;
+  justify-content: center;
+  text-align: center;
+  background-image: url('https://ols.kennesaw.edu/images/bannerredesign.jpg');
+  background-size: 100% 250px;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+
+.container a:hover{
+  cursor: pointer;
+  opacity: .5; 
+}
+
+.box {
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+.box a{
+  padding: 10px;
+  background-color: #B2B4B2;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 5px;
+  color:#FFC629;
+  margin:5px;
+  font-size: .85em;
+
+}
+.box-image:hover{
+  box-shadow: 5px darkgray;
+}
+.box-image{
+  height: 225px;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.box-1{
+  background-image: url('https://styleguide.kennesaw.edu/images/master_brand-01.png')
+  
+}
+
+
+.motto {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .75em;
+  font-weight: bold;
+  line-height: 1.3em;
+  text-align: center;
+  color: #FFC629;
+  padding: .5em;
+  background-image:url("https://webstatic.kennesaw.edu/_resources/images/template/footer_bg.jpg");
+}
+
+
+  
