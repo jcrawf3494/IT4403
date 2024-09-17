@@ -45,10 +45,11 @@
 
 <script>
         $(document).ready(function(){
-            $.getJSON("google-books-book.json", function(json){
+            $.getJSON("google-books-book.json", function(jc){
 
-                $('#title').append(json.volumeInfo.title);
-		    $('#pic').append(json.volumeInfo.imageLinks.thumbnail)
+                $('#title').append(jc.volumeInfo.title);
+		
+		
 
             });
 
