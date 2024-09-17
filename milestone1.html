@@ -32,7 +32,10 @@
   
 
 <div id="title">Title: </div>
-<div id="pic"></div>
+<div id="Author">Author: </div>
+<div id="ISBN">ISBN: </div>
+<div id="publishedDate">Date of Publication: </div>	
+<div id="description">About: </div>
 
 
 
@@ -44,11 +47,14 @@
 
 
 <script>
-        $(document).ready(function(){
-            $.getJSON("google-books-book.json", function(jc){
-
-                $('#title').append(jc.volumeInfo.title);
-		
+	$(document).ready(function(){
+		$.getJSON("google-books-book.json", function(jc){
+			$('#title').append(jc.volumeInfo.title);
+			$('#Author').append(jc.volumeInfo.authors);
+			$('#ISBN').append(jc.volumeInfo.industryIdentifiers.[0].identifier);
+			$('#publishedDate').append(jc.volumeInfo.publishedDate);
+			$('#description').append(jc.volumeInfo.description);
+	
 		
 
             });
