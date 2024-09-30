@@ -34,8 +34,10 @@
         var term = $("#booksearch").val(); // Get the value from the input textbox
         var parameter = "?q=" + term + "&startIndex=0&maxResults=15";
         var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
+        var service_point2 = "https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001/volumes" + parameter;
 
-        $.getJSON(service_point, function(json) {
+
+        $.getJSON(service_point, service_point2, function(json) {
           console.log(json);
           var total = json.totalItems;
           $("#total").text(total);

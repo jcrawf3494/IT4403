@@ -14,6 +14,7 @@
         var id = urlParams.get('id');
 
 		var service_point="https://www.googleapis.com/books/v1/volumes/"+id;
+        
         $.getJSON(service_point, function (json)
         {
 			var booksHTML="";

@@ -9,6 +9,15 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<nav>
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="milestone1.html">MILESTONE 1</a></li>
+      <li><a class="active" href="">MILESTONE 2</a></li>
+      <li><a href="milestone3.html">MILESTONE 3</a></li>
+      <li><a href="milestone4.html">MILESTONE 4</a></li>
+    </ul>
+</nav>
 <script>
     $(function () {
 
@@ -17,7 +26,7 @@
 
         $.getJSON(service_point2, function (json2) {
 
-            //$("#shelf").text(json.title); 
+
 
             resultHTML = "";
             for (i in json2.items) {
