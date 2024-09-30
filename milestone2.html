@@ -24,13 +24,13 @@
 <h1>MILESTONE 2</h1>
 
 <input id="booksearch" placeholder="Search Books">
-<button id="button" type="button">SEARCH</button>
+<button id="btn" type="button">SEARCH</button>
 
 
 <body>
   <div id="results" style="display: flex; flex-wrap: wrap;"></div>
   <script>
-    $(("btn1").click (function(){
+    $(("btn").click (function(){
 		var term = $("booksearch").val(); //or get the value from a textbox user input; you can Google how to do it.
 		var parameter="?q="+term+"&startIndex=30&maxResults=15"; 
 		var service_point="https://www.googleapis.com/books/v1/volumes/"+parameter;
