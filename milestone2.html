@@ -53,8 +53,8 @@
             if (json.items[i].volumeInfo.imageLinks != null)
               cover = json.items[i].volumeInfo.imageLinks.smallThumbnail;
 
-            resultHTML += "<div class='bookdiv'>";
-            resultHTML += "<img src='" + cover + "' style='float: left' />";
+            resultHTML += "<div class='bookdiv' 'display:flex' 'flex-wrap: wrap';>";
+            resultHTML += "<img src='" + cover + " />";
             resultHTML += "<a href='bookinfo.html?id=" + bookid + "'>" + booktitle + "</a>";
             resultHTML += "</div>";
           }
