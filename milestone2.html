@@ -1,74 +1,67 @@
-<h1<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MILESTONE 2</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-
-
-<nav>
-  <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="milestone1.html">MILESTONE 1</a></li>
-    <li><a class ="active" href="">MILESTONE 2</a></li>
-    <li><a href="milestone3.html">MILESTONE 3</a></li>
-    <li><a href="milestone4.html">MILESTONE 4</a></li>
-  </ul>
-</nav>
-
-
-<h1>MILESTONE 2</h1>
-
-<input id="booksearch" placeholder="Search Books">
-<button id="btn" type="button">SEARCH</button>
-
-
 <body>
+  <nav>
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="milestone1.html">MILESTONE 1</a></li>
+      <li><a class="active" href="">MILESTONE 2</a></li>
+      <li><a href="milestone3.html">MILESTONE 3</a></li>
+      <li><a href="milestone4.html">MILESTONE 4</a></li>
+    </ul>
+  </nav>
+
+  <h1>MILESTONE 2</h1>
+
+  <input id="booksearch" placeholder="Search Books">
+  <button id="btn" type="button">SEARCH</button>
+
   <div id="results" style="display: flex; flex-wrap: wrap;"></div>
+
   <script>
-  $(function(){
-    $("btn").click(function()){
-          
-		var term = $("booksearch").val(); //or get the value from a textbox user input; you can Google how to do it.
-		var parameter="?q="+term+"&startIndex=30&maxResults=15"; 
-		var service_point="https://www.googleapis.com/books/v1/volumes/"+parameter;
-        $.getJSON(service_point, function (json)
-        {
-			console.log(json);
-			var total=json.totalItems;
-			$("#total").text(total); 
-			
-			var resultHTML="";
-			for (i in json.items)
-			{
-				var booktitle=json.items[i].volumeInfo.title;
-				var bookid=json.items[i].id;
-				var cover="";
-				if (json.items[i].volumeInfo.imageLinks != null)
-					cover=json.items[i].volumeInfo.imageLinks.smallThumbnail;
+    $(function() {
+      $("#btn").click(function() {
+        var term = $("#booksearch").val(); // Get the value from the input textbox
+        var parameter = "?q=" + term + "&startIndex=0&maxResults=15";
+        var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
 
-				resultHTML+="<div class='bookdiv'>";
-				resultHTML+="<img src='"+cover+"' style='float: left' />";
-				resultHTML+="<a href='bookinfo.html?id="+bookid+"'>"+booktitle+"</a>";
-				resultHTML+="</div>";;
-			}
-			$("#results").html(resultHTML); 
-			$(".bookdiv").css("width", "300px");
-		});
-    }
+        $.getJSON(service_point, function(json) {
+          console.log(json);
+          var total = json.totalItems;
+          $("#total").text(total);
 
+          var resultHTML = "";
+          for (var i in json.items) {
+            var booktitle = json.items[i].volumeInfo.title;
+            var bookid = json.items[i].id;
+            var cover = "";
+            if (json.items[i].volumeInfo.imageLinks != null)
+              cover = json.items[i].volumeInfo.imageLinks.smallThumbnail;
+
+            resultHTML += "<div class='bookdiv'>";
+            resultHTML += "<img src='" + cover + "' style='float: left' />";
+            resultHTML += "<a href='bookinfo.html?id=" + bookid + "'>" + booktitle + "</a>";
+            resultHTML += "</div>";
+          }
+          $("#results").html(resultHTML);
+          $(".bookdiv").css("width", "300px");
+        });
+      });
     });
-</script>
+  </script>
 
-
+  <footer>
+    <a>Fall Semester 2024</a>
+  </footer>
 </body>
-
-<footer>
-  <a>Fall Semester 2024</a>
-</footer>
 
 </html>
