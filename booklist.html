@@ -28,11 +28,14 @@
 		$.getJSON("google-books-search.json", function(jc){
             $.each(jc.items, function(i, info){
                 $(#booklist).append(
-                <div id="title">${info.volumeInfo.title} </div>
-                <div id="Author">${info.volumeInfo.authors} </div>
-                <div id="ISBN">${info.volumeInfo.industryIdentifiers[0].identifier} </div>
-                <div id="publishedDate">${info.volumeInfo.publishedDate} </div>	
-                <div id="description">${info.volumeInfo.description} </div>
+                    `
+                    <div id="title">${info.volumeInfo.title} </div>
+                    <div id="Author">${info.volumeInfo.authors} </div>
+                    <div id="ISBN">${info.volumeInfo.industryIdentifiers[0].identifier} </div>
+                    <div id="publishedDate">${info.volumeInfo.publishedDate} </div>	
+                    <div id="description">${info.volumeInfo.description} </div>
+                    `
+                    
                 )
             }		
             });
