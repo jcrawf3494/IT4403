@@ -143,4 +143,21 @@ body{
   color:black;
  }
 
+ .bookdiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.bookdiv img {
+  margin-right: 15px;
+}
+.bookdiv a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+}
+
   
