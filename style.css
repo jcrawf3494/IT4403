@@ -143,15 +143,10 @@ body{
   color:black;
  }
 
- #results {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
 
 .bookdiv {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   width: 200px;
   margin-bottom: 10px;
