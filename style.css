@@ -151,6 +151,10 @@ body{
   width: 200px;
   margin: 10px;
   padding: 10px;
+  text-align: center;
+}
+
+.bookdiv:hover{
   background-color: #B2B4B2;
 }
 
@@ -164,5 +168,11 @@ body{
   text-decoration: none;
   font-size: 16px;
   color:  #2D2926;
+  text-align: center;
+}
+.bookdiv a:hover {
+  text-decoration: none;
+  font-size: 16px;
+  color:  #FFC629;
   text-align: center;
 }
