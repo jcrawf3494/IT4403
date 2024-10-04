@@ -47,9 +47,7 @@
         var button2 = document.getElementById("show2").checked;
         $("label").show();
         var term = $("#booksearch").val();
-        if button2 == true{var parameter = "?q=" + term + "&startIndex=21 &maxResults=40";}
-        else {var parameter = "?q=" + term + "&startIndex=0&maxResults=20";}
-        
+        var parameter = "?q=" + term + "&startIndex=0&maxResults=20";
         var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
         
 
