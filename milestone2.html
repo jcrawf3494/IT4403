@@ -74,41 +74,42 @@
         });
       });
     });
-    $(function() {
-      $("#show2").click(function() {
-        $("#results").empty();
-        var button2 = document.getElementById("show2").checked;
-        $("label").show();
-        var term = $("#booksearch").val();
-        var parameter = "?q=" + term + "&startIndex=21&maxResults=40";
-        var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
-        
+   
+  </script>
+<script>
+  $(function() {
+    $("#show2").click(function() {
+      $("#results").empty();
+      $("label").show();
+      var term = $("#booksearch").val();
+      var parameter = "?q=" + term + "&startIndex=21&maxResults=40";
+      var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
+      
 
-        $.getJSON(service_point, function(json) {
-          console.log(json);
-          var total = json.totalItems;
-          $("#total").text(total);
+      $.getJSON(service_point, function(json) {
+        console.log(json);
+        var total = json.totalItems;
+        $("#total").text(total);
 
-          var resultHTML = "";
-          for (var i in json.items) {
-            var booktitle = json.items[i].volumeInfo.title;
-            var bookid = json.items[i].id;
-            var cover = "";
-            if (json.items[i].volumeInfo.imageLinks != null)
-              cover = json.items[i].volumeInfo.imageLinks.smallThumbnail;
+        var resultHTML = "";
+        for (var i in json.items) {
+          var booktitle = json.items[i].volumeInfo.title;
+          var bookid = json.items[i].id;
+          var cover = "";
+          if (json.items[i].volumeInfo.imageLinks != null)
+            cover = json.items[i].volumeInfo.imageLinks.smallThumbnail;
 
-            resultHTML += "<div class='bookdiv'>";
-            resultHTML += "<img src='" + cover + "' style='float: center' />";
-            resultHTML += "<a href='bookinfo.html?id=" + bookid + "'>" + booktitle + "</a>";
-            resultHTML += "</div>";;
-          }
-          $("#results").html(resultHTML);
+          resultHTML += "<div class='bookdiv'>";
+          resultHTML += "<img src='" + cover + "' style='float: center' />";
+          resultHTML += "<a href='bookinfo.html?id=" + bookid + "'>" + booktitle + "</a>";
+          resultHTML += "</div>";;
+        }
+        $("#results").html(resultHTML);
 
-        });
       });
     });
-  </script>
-
+  });
+</script>
   <footer>
     <a>Fall Semester 2024</a>
   </footer>
