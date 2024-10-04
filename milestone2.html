@@ -90,6 +90,8 @@
         console.log(json);
         var total = json.totalItems;
         $("#total").text(total);
+        $("#results").empty();
+        $("#results").html('');
 
         var resultHTML = "";
         for (var i in json.items) {
