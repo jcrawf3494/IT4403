@@ -26,14 +26,26 @@
   <button id="btn" type="button">SEARCH</button>
   <button type="button"><a href="mybookshelf.html">My Bookshelf</a></button>
   <h3 id="total"></h3>
-  
-  <div id="results" style="display: flex; flex-wrap: wrap; margin: 25px"></div>
+  <div class="page_numbers" >
+    <label id ="show" hidden>
+        <input type="radio" name="option" value="1"> Page 1
+    </label>
+    <label id ="show" hidden>
+        <input type="radio" name="option" value="2"> Page 2
+    </label>
+    <label id ="show" hidden>
+        <input type="radio" name="option" value="3"> Page 3
+    </label>
+</div>
+
+<div id="results" style="display: flex; flex-wrap: wrap; margin: 25px"></div>
   
 
   <script>
     $(function() {
       $("#btn").click(function() {
-        var term = $("#booksearch").val(); 
+        $("label").show();
+        var term = $("#booksearch").val();
         var parameter = "?q=" + term + "&startIndex=0&maxResults=15";
         var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
         
