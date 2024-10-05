@@ -38,15 +38,7 @@
 				resultHTML+=json.volumeInfo.categories[i]+"; ";
             }
             $("#category").html(resultHTML);
-			google.books.load();
-	  
-
-			function initialize() {
-			  var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
-			  viewer.load(json.volumeInfo.industryIdentifiers[0].identifier);
-			}
-	  
-			google.books.setOnLoadCallback(initialize);
+			
 		}); 
     });
 </script>
