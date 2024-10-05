@@ -21,8 +21,9 @@
 <script>
     $(function () {
 
-        var service_point1 = "https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001/";
-        var service_point2 = "https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001/volumes";
+        var apiKey = 'AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag';
+        var service_point1 = "https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001?key=" +apikey;
+        var service_point2 = "https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001/volumes?key=";
 
         $.getJSON(service_point2, function (json2) {
 
