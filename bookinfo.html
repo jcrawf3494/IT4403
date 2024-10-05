@@ -39,7 +39,7 @@
 			
 			$("#cover").attr("src",cover);
 			$("#title").text(title);
-			$("#about").text(about);
+			$("#about").append(about);
 			$("#webpage").text(url).attr("href",url);
 			
 			var resultHTML="";
@@ -62,7 +62,7 @@
 <p><a id="webpage">Purchase on Google</a></p>
 <img id="cover" height=200 />
 <div id="viewerCanvas" style="width: 600px; height: 500px"></div>
-<p>description:</p>
+<h3>Description:</h3>
 <div id="about"></div>
 <p>Categories:</p>
 <div id="category"></div>
