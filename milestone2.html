@@ -46,7 +46,7 @@
 
   <script>
     $(function() {
-      var apiKey = 'AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag';
+      var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
       $("#btn").click(function() {
         var button2 = document.getElementById("show2").checked;
         $("label").show();
@@ -55,7 +55,7 @@
         $("#page3").hide();
 
         var term = $("#booksearch").val();
-        var parameter = "?q=" + term + "&startIndex=0&maxResults=20" +apiKey;
+        var parameter = "?q=" + term + "&startIndex=0&maxResults=20&key=" + apiKey;
         var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
         
 
@@ -86,7 +86,7 @@
   </script>
 <script>
   $(function() {
-    var apiKey = 'AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag';
+    var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
     $("#show2").click(function() {
       $("#results").empty();
       $("label").show();
@@ -94,7 +94,7 @@
         $("#page2").show();
         $("#page3").hide();
       var term = $("#booksearch").val();
-      var parameter = "?q=" + term + "&startIndex=21&maxResults=20" +apiKey;
+      var parameter = "?q=" + term + "&startIndex=21&maxResults=20&key=" + apiKey;
       var service_point = "https://www.googleapis.com/books/v1/volumes/" + parameter;
       
 
