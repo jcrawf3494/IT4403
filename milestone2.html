@@ -28,13 +28,13 @@
 
   <div class="page_numbers" >
     <label id ="show1" hidden>
-        <input type="radio" name="option" value="1"> Page 1
+        <input type="radio" name="option" value="1" id ="show1"> Page 1
     </label>
     <label id ="show2" hidden>
-        <input type="radio" name="option" value="2"> Page 2
+        <input type="radio" name="option" value="2" id ="show2"> Page 2
     </label>
     <label id ="show3" hidden>
-        <input type="radio" name="option" value="3"> Page 3
+        <input type="radio" name="option" value="3" id ="show3"> Page 3
     </label>
 </div>
 <h3 id= "page1" hidden> Showing Results 1-20 </h3>
@@ -50,6 +50,8 @@
       $("#btn").click(function() {
         var button2 = document.getElementById("show2").checked;
         document.getElementById("show1").checked = true;
+        document.getElementById("show2").checked =  false;
+        document.getElementById("show3").checked = false;
         $("label").show();
         $("#page1").show();
         $("#page2").hide();
