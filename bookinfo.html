@@ -22,11 +22,13 @@
 			var booksHTML="";
 			var description=json.volumeInfo.description;
 			var title=json.volumeInfo.title;
+			var about=json.volumeInfo.description;
 			var url=json.volumeInfo.infoLink;
 			var cover=json.volumeInfo.imageLinks.small;
 			
 			$("#cover").attr("src",cover);
 			$("#title").text(title);
+			$("#about").text(about);
 			$("#webpage").text(url).attr("href",url);
 			
 			var resultHTML="";
@@ -42,8 +44,10 @@
 
 <body>
 <h1 id="title"></h1>
-<p><a id="webpage"></a></p>
+<p><a id="webpage">Purchase on Google</a></p>
 <img id="cover" height=200 />
+<p>description:</p>
+<div id="about"></div>
 <p>Categories:</p>
 <div id="category"></div>
 
