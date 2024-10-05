@@ -52,6 +52,22 @@
 		}); 
     });
 </script>
+<script type="text/javascript">
+	google.books.load();
+
+	function initialize() {
+		$.getJSON(service_point, function (json)
+        {
+			var description=json.volumeInfo.industryIdentifiers[0].identifier);
+			
+			
+		}); 
+	  var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+	  viewer.load(description);
+	}
+
+	google.books.setOnLoadCallback(initialize);
+  </script>
 
 
 
@@ -63,6 +79,7 @@
 <div style="display: flex; flex-wrap: wrap; margin: 25px">
 <p><a id="webpage">Purchase on Google</a></p>
 <img id="cover" height=200 />
+<div id="viewerCanvas" style="display: flex; flex-wrap: wrap; margin: 25px; width: 600px; height: 500px"></div>
 </div>
 <h3>Description:</h3>
 <div id="about"></div>
