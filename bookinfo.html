@@ -64,11 +64,11 @@
 		$.getJSON(service_point, function (json)
         {
 			var description=(json.volumeInfo.industryIdentifiers[0].identifier);
-			
+			var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+	  viewer.load(description);
 			
 		}); 
-	  var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
-	  viewer.load(description);
+	  
 	}
 
 	google.books.setOnLoadCallback(initialize);
