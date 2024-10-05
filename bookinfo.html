@@ -8,6 +8,7 @@
     <title>MILESTONE 2</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
 	<script>
     $(function(){
 		var urlParams = new URLSearchParams(window.location.search);
@@ -37,15 +38,28 @@
 				resultHTML+=json.volumeInfo.categories[i]+"; ";
             }
             $("#category").html(resultHTML);
+			google.books.load();
+	  
+
+			function initialize() {
+			  var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+			  viewer.load(json.volumeInfo.industryIdentifiers[0].identifier);
+			}
+	  
+			google.books.setOnLoadCallback(initialize);
 		}); 
     });
 </script>
+
+
+
 </head>
 
 <body>
 <h1 id="title"></h1>
 <p><a id="webpage">Purchase on Google</a></p>
 <img id="cover" height=200 />
+<div id="viewerCanvas" style="width: 600px; height: 500px"></div>
 <p>description:</p>
 <div id="about"></div>
 <p>Categories:</p>
