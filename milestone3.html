@@ -48,9 +48,10 @@
 <script> 
   function getBookDetails(bookid)
  {
+  var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
      $("#bookdetails").html("Working ...");
      //we can use AJAX here because this service provider allows cross origin request
-     $.getJSON("https://www.googleapis.com/books/v1/volumes/" + bookid, function (json)
+     $.getJSON("https://www.googleapis.com/books/v1/volumes/"+ bookid + "?key=" + apiKey, function (json)
      {
         $("#bookdetails").html("");
   var bookHTML = "<h3>"+json.volumeInfo.title+ "</h3>";
