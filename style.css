@@ -146,8 +146,11 @@ body{
 
 .bookdiv {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+ 
   width: 200px;
   margin: 10px;
   padding: 10px;
@@ -176,4 +179,49 @@ body{
   font-size: 16px;
   color:  #FFC629;
   text-align: center;
+}
+
+.searchbutton {
+  text-decoration: none;
+  font-size: 14px;
+  color:  #2D2926;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+.searchbutton:hover {
+  background-color: #B2B4B2;
+ 
+}
+.searchalign {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+.pagination button{
+  text-decoration: none;
+  font-size: 24px;
+  color:  #2D2926;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.pagination button:hover {
+  background-color: #B2B4B2;
+
+}
+#results{
+  display: flex;
+  flex-wrap: wrap; 
+  margin: 25px;
+  flex-direction: row;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color:  #2D2926;
+}
+.bookdivInner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%; /
 }
