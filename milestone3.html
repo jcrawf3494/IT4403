@@ -57,7 +57,7 @@
   var bookHTML = "<h3>"+json.volumeInfo.title+ "</h3>";
   bookHTML+="<img src='"+json.volumeInfo.imageLinks.smallThumbnail+ "'>";
   bookHTML+="<p>"+json.volumeInfo.description+ "</p>";
-  bookHTML+="<a href='https://www.googleapis.com/books/v1/volumes/"+bookid+"' target='_blank'>See this book's JSON</a>";
+  
   $("#bookdetails").html(bookHTML);
      });
  }
