@@ -1,36 +1,126 @@
-<h1<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MILESTONE 4</title>
+  <title>MILESTONE 3</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-
-
-<nav>
-  <ul>
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="milestone1.html">MILESTONE 1</a></li>
-	<li><a href="milestone2.html">MILESTONE 2</a></li>
-    <li><a href="milestone3.html">MILESTONE 3</a></li>
-    <li><a class ="active" href="milestone4.html">MILESTONE 4</a></li>
-  </ul>
-</nav>
-
-
-<h1>MILESTONE 4</h1>
-
-
 <body>
- 
+  <nav>
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="milestone1.html">MILESTONE 1</a></li>
+      <li><a href="milestone2.html">MILESTONE 2</a></li>
+      <li><a class="active" href="milestone3.html">MILESTONE 3</a></li>
+      <li><a href="milestone4.html">MILESTONE 4</a></li>
+    </ul>
+  </nav>
 
+  <h1>MILESTONE 3</h1>
+  
+  <input id="booksearch" placeholder="Search Books">
+  <button class="searchbutton" id="btn" type="button">SEARCH</button>
+  <button class="searchbutton" id="btn2" type="button">MY BOOKSHELF</button>
+
+  <div class="page_numbers">
+    <label>
+      <div style="padding: 8px 16px;" class="pagination">
+        <button class="page-btn" data-page="1">1</button>
+        <button class="page-btn" data-page="2">2</button>
+        <button class="page-btn" data-page="3">3</button>
+        <button class="page-btn" data-page="4">4</button>
+        <button class="page-btn" data-page="5">5</button>
+      </div>
+    </label>
+  </div>
+
+  <div id="results"></div>
+  <div id="bookdetails" style="width: 50%; padding:10px"></div>
+
+  <script>
+    const API_KEY = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
+    
+    function getBookDetails(bookId) {
+      $("#bookdetails").html("Working ...");
+      $.getJSON(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=${API_KEY}`, function(json) {
+        const bookHTML = `
+          <h3>${json.volumeInfo.title}</h3>
+          <img src="${json.volumeInfo.imageLinks.smallThumbnail}">
+          <p>${json.volumeInfo.description}</p>
+        `;
+        $("#bookdetails").html(bookHTML);
+      });
+    }
+
+    function createBookHTML(book) {
+      const cover = book.volumeInfo.imageLinks?.smallThumbnail || '';
+      return `
+        <div class="bookdiv">
+          <img class="booklistitem" data-bookid="${book.id}" src="${cover}" style="float: left" />
+          <div class="bookdivInner">
+            <a href="bookinfo.html?id=${book.id}">${book.volumeInfo.title}</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function displayBooks(json) {
+      const resultHTML = json.items.map(createBookHTML).join('');
+      $("#results").html(resultHTML);
+      $(".bookdiv").css("width", "150px");
+      $(".booklistitem").on('click', function() {
+        getBookDetails($(this).attr("data-bookid"));
+      });
+    }
+
+    function searchBooks(startIndex = 0) {
+      const term = $("#booksearch").val();
+      const parameter = `?q=${term}&startIndex=${startIndex}&maxResults=10&key=${API_KEY}`;
+      const service_point = `https://www.googleapis.com/books/v1/volumes/${parameter}`;
+
+      $.getJSON(service_point, displayBooks);
+    }
+
+    function resetUI() {
+      $("#bookdetails").empty();
+      $("#results").empty();
+      $(".page-btn").css("background-color", "");
+    }
+
+    // Event Handlers
+    $(function() {
+      // Search button click
+      $("#btn").click(function() {
+        resetUI();
+        $("label").show();
+        $("#show1").css("background-color", "#FFC629");
+        searchBooks(0);
+      });
+
+      // Pagination buttons click
+      $(".page-btn").click(function() {
+        const page = $(this).data("page");
+        resetUI();
+        $(this).css("background-color", "#FFC629");
+        searchBooks((page - 1) * 10);
+      });
+
+      // My Bookshelf button click
+      $("#btn2").click(function() {
+        resetUI();
+        $("label").hide();
+        
+        const shelfUrl = `https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001/volumes?key=${API_KEY}`;
+        $.getJSON(shelfUrl, displayBooks);
+      });
+    });
+  </script>
+
+  <footer>
+    <a>Fall Semester 2024</a>
+  </footer>
 </body>
-
-<footer>
-  <a>Fall Semester 2024</a>
-</footer>
-
 </html>
