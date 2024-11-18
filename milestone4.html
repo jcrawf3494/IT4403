@@ -1,4 +1,4 @@
-<h1<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -6,6 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MILESTONE 4</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
+  
+	<script id="booktemplate" type="text/template">
+		{{#items}}
+		<div class='book'>
+			<h2>{{volumeInfo.title}}</h2>
+			<img src='{{volumeInfo.imageLinks.smallThumbnail}}' width='100' />
+			<div>{{volumeInfo.description}}</div>
+		</div>
+		{{/items}}
+	</script>
+
+	<script type="text/javascript">
+    $(document).ready(function ()
+    {var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
+        $("#button1").click(function ()
+        {
+			$("#results").html("Searching ...");
+			$.getJSON("https://www.googleapis.com/books/v1/volumes/?q="+$("#searchTerm").val()+"&startIndex=0&maxResults=10&key=" + apiKey, function (jsonData)
+			{
+                $("#results").html("");
+				var template = $('#booktemplate').html();
+				var html = Mustache.render(template, jsonData);
+				$("#results").html(html);
+            });
+        });
+    });
+
+</script>
+
 </head>
 
 
@@ -14,7 +45,7 @@
   <ul>
     <li><a href="index.html">HOME</a></li>
     <li><a href="milestone1.html">MILESTONE 1</a></li>
-	<li><a href="milestone2.html">MILESTONE 2</a></li>
+	  <li><a href="milestone2.html">MILESTONE 2</a></li>
     <li><a href="milestone3.html">MILESTONE 3</a></li>
     <li><a class ="active" href="milestone4.html">MILESTONE 4</a></li>
   </ul>
@@ -25,12 +56,19 @@
 
 
 <body>
- 
+<div id="mylibrary">
+  Test
+</div>
+
+<div id="searchLayout">
+<input  id="booksearch" placeholder="Search Books">
+<button class ="searchbutton" id="btn" type="button">SEARCH</button>
+</div>
 
 </body>
 
 <footer>
-  <a>Fall Semester 2024</a>
+  <a>FALL SEMESTER 2024</a>
 </footer>
 
 </html>
