@@ -200,6 +200,11 @@ body{
   background-color: #B2B4B2;
  
 }
+
+#booksearch{
+  width: 500px;
+  height: 25px;
+}
 .searchalign {
   display: block;
   margin-left: auto;
@@ -234,7 +239,44 @@ body{
   width: 100%; 
 }
 #searchLayout {
+  display: flex;
   padding-top: .15em;
   padding-bottom: .15em;
  
+}
+
+#mybookshelf{
+  text-align: center;
+  }
+
+#mylibrary {
+  border: 1px solid #2D2926;
+  border-radius: 1em;
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  padding: 0 100px;
+  margin: 0 auto;
+ 
+}
+.book{
+  text-align: center;
+  font-size: small;
+  flex: 0 0 200px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+  border-radius: 1em;
+}
+.book h2{
+  padding: 0 5px 5px;
+}
+.book img{
+padding: 10px;
+max-width: 100%;
+height: 200px;
+}
+
+#next{
+float: right;
 }

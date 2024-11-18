@@ -12,28 +12,29 @@
 	<script id="booktemplate" type="text/template">
 		{{#items}}
 		<div class='book'>
+      <img src='{{volumeInfo.imageLinks.smallThumbnail}}' />
 			<h2>{{volumeInfo.title}}</h2>
-			<img src='{{volumeInfo.imageLinks.smallThumbnail}}' width='100' />
-			<div>{{volumeInfo.description}}</div>
 		</div>
 		{{/items}}
 	</script>
 
 	<script type="text/javascript">
-    $(document).ready(function ()
-    {var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
-        $("#button1").click(function ()
-        {
-			$("#results").html("Searching ...");
-			$.getJSON("https://www.googleapis.com/books/v1/volumes/?q="+$("#searchTerm").val()+"&startIndex=0&maxResults=10&key=" + apiKey, function (jsonData)
+    $(document).ready(function (){
+      var counter = 6;
+      var resultsShow = 6; 
+      var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
+			$.getJSON("https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001/volumes?key=" + apiKey + "&maxResults=" + resultsShow, function (jsonData)
 			{
-                $("#results").html("");
+        $("#mylibrary").html("");
 				var template = $('#booktemplate').html();
 				var html = Mustache.render(template, jsonData);
-				$("#results").html(html);
-            });
+				$("#mylibrary").html(html);
+      
+      });
+      
         });
-    });
+    
+  
 
 </script>
 
@@ -56,9 +57,23 @@
 
 
 <body>
-<div id="mylibrary">
-  Test
+  <div>
+    <h3 id="mybookshelf">MY LIBRARY</h3>
 </div>
+
+<div>
+  <button id="prev">Previous</button>
+  <button id="next">Next</button>
+  <div id="mylibrary">
+    <div>
+      <button id="next">Next</button>
+  </div>
+  
+  </div>  
+</div>
+
+
+
 
 <div id="searchLayout">
 <input  id="booksearch" placeholder="Search Books">
