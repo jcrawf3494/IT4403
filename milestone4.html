@@ -8,7 +8,71 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js"></script>
-  
+</script>
+<script id="booktemplate2" type="text/template">
+  {{#items}}
+  <div class='book2'>
+    <img src='{{volumeInfo.imageLinks.smallThumbnail}}' />
+    <h2>{{volumeInfo.title}}</h2>
+    <h3>{{volumeInfo.authors}}</h3>
+    <a href={{volumeInfo.previewlink}}>PURCHASE</a>
+  </div>
+  {{/items}}
+</script>
+  <script>
+    $(function(){
+
+      var scrollpage = 1;
+
+      $("#btnGrid").click(function (){
+        $(".book2").css("width", "200px").css("height","250px");
+        $("#searchResults").attr("data-layout","Grid");
+      });
+      
+      $("#btnList").click(function (){
+        $(".book2").css("width", "100%").css("height","250px");
+        $("#searchResults").attr("data-layout","List");
+      });
+
+      $(document).on('scroll', function() {
+        if($(document).scrollTop() + $(window).height() >= $(document).height()-1) {
+          scrollpage++;
+          loadBooks(scrollpage);
+        }
+      });
+    });
+    </script>
+    
+    <script type="text/javascript">
+      $(document).ready(function (){
+        $("#btn").click(function() {
+            $("#searchResults").html("");  
+            scrollpage= 1;     
+            loadBooks(scrollpage);
+        });
+    });
+
+    
+    function loadBooks(page) {
+        var startIndex = (page - 1) * 10;
+        var term = $("#booksearch").val();
+        var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
+        
+        $.getJSON("https://www.googleapis.com/books/v1/volumes/?q=" + term + "&startIndex=" + startIndex +"&maxResults=10&key=" + apiKey, function (jsonData) {
+            var template = $('#booktemplate2').html();
+            var html = Mustache.render(template, jsonData);
+            $("#searchResults").append(html);  
+            
+         
+            var currentLayout = $("#searchResults").attr("data-layout");
+            if(currentLayout === "Grid") {
+                $(".book2").css("width", "200px").css("height","250px");
+            } else if(currentLayout === "List") {
+                $(".book2").css("width", "100%").css("height","250px");
+            }
+        });
+    }
+  </script>
 	<script id="booktemplate" type="text/template">
 		{{#items}}
 		<div class='book'>
@@ -34,13 +98,9 @@
       
         });
     
-  
-
 </script>
 
 </head>
-
-
 
 <nav>
   <ul>
@@ -72,12 +132,14 @@
   </div>  
 </div>
 
-
-
-
 <div id="searchLayout">
 <input  id="booksearch" placeholder="Search Books">
 <button class ="searchbutton" id="btn" type="button">SEARCH</button>
+</div>
+
+<p>Click to switch layout: <a href="#" id='btnList'>List View</a> | <a href="#" id='btnGrid'>Grid View</a></p>
+<div id="searchResults" data-layout="List">
+  <div id="boxitem" > </div>
 </div>
 
 </body>
