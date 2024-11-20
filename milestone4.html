@@ -13,9 +13,16 @@
   {{#items}}
   <div class='book2'>
     <img src='{{volumeInfo.imageLinks.smallThumbnail}}' />
-    <h2>{{volumeInfo.title}}</h2>
-    <h3>{{volumeInfo.authors}}</h3>
-    <a href={{volumeInfo.previewlink}}>PURCHASE</a>
+    <div>
+      <h2>{{volumeInfo.title}}</h2>
+        <div>
+          <ul>{{volumeInfo.authors}}</ul>
+          <p>{{volumeInfo.description}}</p>
+          <div><a href={{volumeInfo.previewLink}} id="morelink" target="_blank">more...</a></div>
+          <h2><a href={{volumeInfo.previewLink}}>PURCHASE</a></h2>
+      </div>
+    </div>
+    
   </div>
   {{/items}}
 </script>
@@ -25,7 +32,7 @@
       var scrollpage = 1;
 
       $("#btnGrid").click(function (){
-        $(".book2").css("width", "200px").css("height","250px");
+        $(".book2").css("width", "500px").css("height","250px");
         $("#searchResults").attr("data-layout","Grid");
       });
       
@@ -66,7 +73,7 @@
          
             var currentLayout = $("#searchResults").attr("data-layout");
             if(currentLayout === "Grid") {
-                $(".book2").css("width", "200px").css("height","250px");
+                $(".book2").css("width", "500px").css("height","250px");
             } else if(currentLayout === "List") {
                 $(".book2").css("width", "100%").css("height","250px");
             }
@@ -76,8 +83,11 @@
 	<script id="booktemplate" type="text/template">
 		{{#items}}
 		<div class='book'>
-      <img src='{{volumeInfo.imageLinks.smallThumbnail}}' />
-			<h2>{{volumeInfo.title}}</h2>
+      <a href={{volumeInfo.previewLink}}><img src='{{volumeInfo.imageLinks.smallThumbnail}}' /></a>
+      <div><h2>{{volumeInfo.title}}</h2>
+        <div><a href={{volumeInfo.previewLink}}>PURCHASE</a></div></div>
+		
+      
 		</div>
 		{{/items}}
 	</script>
@@ -99,6 +109,42 @@
         });
     
 </script>
+<script type="text/javascript">
+  $(document).ready(function (){
+    $("#next").click(function() {
+    var counter = 7;
+    var resultsShow = 6; 
+    var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
+    $.getJSON("https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001/volumes?key=" + apiKey + "&startIndex=" + counter + "&maxResults=" + resultsShow, function (jsonData)
+    {
+      $("#mylibrary").html("");
+      var template = $('#booktemplate').html();
+      var html = Mustache.render(template, jsonData);
+      $("#mylibrary").html(html);
+    
+    });
+    
+      });
+    });
+</script>
+<script type="text/javascript">
+  $(document).ready(function (){
+    $("#prev").click(function() {
+    var counter = 0;
+    var resultsShow = 6; 
+    var apiKey = "AIzaSyAHw4L-tM3B0ZqyFLSAWTF7Ht2-w2DCdag";
+    $.getJSON("https://www.googleapis.com/books/v1/users/111404996639619221091/bookshelves/1001/volumes?key=" + apiKey + "&startIndex=" + counter + "&maxResults=" + resultsShow, function (jsonData)
+    {
+      $("#mylibrary").html("");
+      var template = $('#booktemplate').html();
+      var html = Mustache.render(template, jsonData);
+      $("#mylibrary").html(html);
+    
+    });
+    
+      });
+    });
+</script>
 
 </head>
 
@@ -116,7 +162,7 @@
 <h1>MILESTONE 4</h1>
 
 
-<body>
+<body id="bodybackground">
   <div>
     <h3 id="mybookshelf">MY LIBRARY</h3>
 </div>
@@ -125,8 +171,6 @@
   <button id="prev">Previous</button>
   <button id="next">Next</button>
   <div id="mylibrary">
-    <div>
-      <button id="next">Next</button>
   </div>
   
   </div>  
@@ -136,8 +180,8 @@
 <input  id="booksearch" placeholder="Search Books">
 <button class ="searchbutton" id="btn" type="button">SEARCH</button>
 </div>
+<div id="changelayout"><p>CHANGE LAYOUT <a href="#" id='btnList'>LIST</a> | <a href="#" id='btnGrid'>GRID</a></p></div>
 
-<p>Click to switch layout: <a href="#" id='btnList'>List View</a> | <a href="#" id='btnGrid'>Grid View</a></p>
 <div id="searchResults" data-layout="List">
   <div id="boxitem" > </div>
 </div>

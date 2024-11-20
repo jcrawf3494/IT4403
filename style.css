@@ -136,7 +136,11 @@ body{
   
 }
 
-
+#changelayout{
+  font-family: 'Montserrat', sans-serif;
+  font-size: .75em;
+  font-weight: bold;
+}
 .motto {
   font-family: 'Montserrat', sans-serif;
   font-size: .75em;
@@ -204,8 +208,8 @@ body{
 #booksearch{
   width: 500px;
   height: 25px;
-  margin: auto;
-  justify-content: center; /* Center items horizontally */
+  margin: auto ;
+  justify-content: center; 
   
 }
 .searchalign {
@@ -261,7 +265,7 @@ body{
   gap: 2px;
   padding: 0 100px;
   margin: 0 auto;
-  height: 200px;
+  height: 225px;
   justify-content: center; /* Center items horizontally */
   
  
@@ -277,9 +281,10 @@ body{
   border-radius: 1em;
 }
 .book h2{
+  text-align: center;
   padding: 0 5px 5px;
 }
-.book img{
+.book  a{
 padding: 10px;
 max-width: 100%;
 height: auto;
@@ -293,15 +298,14 @@ z-index: 9999999;
 {
   display: flex;
   flex-wrap: wrap;
-  width: 800px;
+  width: 1200px;
   margin: auto;
   justify-content: center; 
 }
 
 #boxitem
 {
-	border: thin solid blue;
-	background-color: #ffeecc;
+
 	width: 99%;
 	margin: 0.3%;
 	height:80px;
@@ -309,7 +313,7 @@ z-index: 9999999;
 
 .book2{
 
-	width: 200px;
+	width: 500px;
 	margin: 0.3%;
 	height:250px;
 	text-align: left;
@@ -320,18 +324,44 @@ z-index: 9999999;
 	border: 1px solid #ccc;
 	box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
 	border-radius: 1em;
-
+  padding: 10px;
+	position: relative;
 	
   }
   .book2 h2{
 	padding: 0;
+  font-family: 'Montserrat', sans-serif;
 	flex: 1;
-	overflow: hidden;
   }
 
   .book2 img{
   max-width: 100%;
-  
   height: auto;
   object-fit: contain;
+  }
+  
+  .book2 p{
+    font-size: small;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 45px;
+  }
+  .book2 ul{
+    font-size: small;
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+  }
+  #morelink {
+    background-color: white;
+    font-size: small;
+    padding-left: 5px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  #prev{
+    font-family: 'Montserrat', sans-serif;
+  }
+  #next{
+    font-family: 'Montserrat', sans-serif;
   }
